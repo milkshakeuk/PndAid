@@ -1,0 +1,20 @@
+{
+    "name": "Pandora/PndAid",
+    "description": "Set of useful tools to handle PND files with php",
+    "minimum-stability": "stable",
+    "authors": [
+        {
+            "name": "Jake Aitchison",
+            "email": "jake.aitchison@outlook.com"
+        }
+    ],
+    "require": {
+        "phpunit/phpunit": "3.7.28"
+    },
+    "autoload": {
+        "psr-0": {
+            "PndAid": "Src/",
+            "PndAid\\Tests": "Tests/"
+        }
+    }
+}
