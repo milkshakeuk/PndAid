@@ -50,8 +50,6 @@ Iterate over a file
         }
     }
 
-### Setup your web server
-
 ## Documentation
 
 ### Unit Testing
