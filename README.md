@@ -23,7 +23,7 @@ $pnd = FileFactory::create('pnd','/path/to/foo.pnd');
 ```
 Get the archive type:
 ```PHP
-$fileType $pnd->fileType();
+$fileType = $pnd->fileType();
 ```
 Get the pXml as a string:
 ```PHP
