@@ -18,11 +18,11 @@ class PndFile extends File
 {
 
     /**
-     * @var SavableFile $icon
+     * @var SavableFile $Icon
      */
     public $Icon;
     /**
-     * @var SavableFile $pxml
+     * @var SavableFile $Pxml
      */
     public $Pxml;
 
