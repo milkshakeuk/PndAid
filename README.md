@@ -1,6 +1,6 @@
 # PndAid
 
-PndAid is a small PHP library to handling and interrogating Pnd files.
+PndAid is a small PHP library for handling and interrogating Pnd files.
 
 ## Features
 
@@ -46,7 +46,7 @@ Iterate over a file
     $fileIterator = new ReverseFileDataIterator('/path/to/file');
     foreach ($fileIterator as $position => $data) {
         if (stripos($data, '<PXML ') !== false) {
-            echo 'found at position: ' . $position . ' the data: ' . $data;
+            echo 'found at position: ' . $position + stripos($data, '<PXML ');
         }
     }
 
