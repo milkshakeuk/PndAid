@@ -27,7 +27,7 @@ $fileType $pnd->fileType();
 ```
 Get the pXml as a string:
 ```PHP
-$pxml = $pnd->Pxml;
+$pxml = $pnd->Pxml->Data();
 ```
 Save the pXml to disk:
 ```PHP
@@ -35,7 +35,7 @@ $pnd->Pxml->Save('/path/to/pxml.xml');
 ```
 Get the icon as a string (not much use but still):
 ```PHP
-$pxml = $pnd->Icon;
+$pxml = $pnd->Icon->Data();
 ```
 Save the icon to disk:
 ```PHP
