@@ -18,38 +18,38 @@ PndAid is a small PHP library for handling and interrogating Pnd files.
 ### Basic Usage
 
 Instantiate a PndFile:
-
-    $pnd = FileFactory::create('pnd','/path/to/foo.pnd');
-
+```PHP
+$pnd = FileFactory::create('pnd','/path/to/foo.pnd');
+```
 Get the archive type:
-
-    $fileType $pnd->fileType();
-
+```PHP
+$fileType $pnd->fileType();
+```
 Get the pXml as a string:
-
-    $pxml = $pnd->Pxml;
-
+```PHP
+$pxml = $pnd->Pxml;
+```
 Save the pXml to disk:
-
-    $pnd->Pxml->Save('/path/to/pxml.xml');
-
+```PHP
+$pnd->Pxml->Save('/path/to/pxml.xml');
+```
 Get the icon as a string (not much use but still):
-
-    $pxml = $pnd->Icon;
-
+```PHP
+$pxml = $pnd->Icon;
+```
 Save the icon to disk:
-
-    $pnd->Icon->Save('/path/to/icon.png');
-
+```PHP
+$pnd->Icon->Save('/path/to/icon.png');
+```
 Iterate over a file
-
-    $fileIterator = new ReverseFileDataIterator('/path/to/file');
-    foreach ($fileIterator as $position => $data) {
-        if (stripos($data, '<PXML ') !== false) {
-            echo 'found at position: ' . $position + stripos($data, '<PXML ');
-        }
+```PHP
+$fileIterator = new ReverseFileDataIterator('/path/to/file');
+foreach ($fileIterator as $position => $data) {
+    if (stripos($data, '<PXML ') !== false) {
+        echo 'found at position: ' . $position + stripos($data, '<PXML ');
     }
-
+}
+```
 ## Documentation
 
 ### Unit Testing
