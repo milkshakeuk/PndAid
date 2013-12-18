@@ -41,7 +41,11 @@ Save the icon to disk:
 ```PHP
 $pnd->Icon->Save('/path/to/icon.png');
 ```
-Iterate over a file
+Find the position of something in the pnd binary
+```PHP
+$position = $pnd->findInFile('<package ');
+```
+Or Iterate over any file for any reason
 ```PHP
 $fileIterator = new ReverseFileDataIterator('/path/to/file');
 foreach ($fileIterator as $position => $data) {
