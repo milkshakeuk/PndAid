@@ -73,11 +73,11 @@ abstract class ArchiveExtractor
 
     /**
      * Extract file from archive
-     * @param string $filePath internal file path within archive
+     * @param string $internalFilePath internal file path within archive
      * @param string $fileDestination
      * @return void
      */
-    abstract public function extractFile($filePath, $fileDestination);
+    abstract public function extractFile($internalFilePath, $fileDestination);
 
     /**
      * Extract the whole archive

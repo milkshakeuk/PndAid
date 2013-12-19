@@ -1,6 +1,6 @@
 <?php
 use PndAid\ArchiveExtractors\ArchiveExtractor;
-use PndAid\ArchiveExtractors\IsoArchiveExtractor;
+use PndAid\ArchiveExtractors\SquashfsArchiveExtractor;
 
 /**
  * Created by PhpStorm.
@@ -9,7 +9,7 @@ use PndAid\ArchiveExtractors\IsoArchiveExtractor;
  * Time: 22:43
  */
 
-class IsoArchiveExtractorTest extends PHPUnit_Framework_TestCase
+class SquashfsArchiveExtractorTest extends PHPUnit_Framework_TestCase
 {
     /**
      * @var ArchiveExtractor $_isoArchiveExtractor
@@ -21,7 +21,7 @@ class IsoArchiveExtractorTest extends PHPUnit_Framework_TestCase
      */
     public function setUp()
     {
-        $this->_squashfsArchiveExtractor = new IsoArchiveExtractor(__DIR__ . '/Bump3.pnd');
+        $this->_squashfsArchiveExtractor = new SquashfsArchiveExtractor(__DIR__ . '/abbaye.pnd');
     }
 
     /**
@@ -29,7 +29,7 @@ class IsoArchiveExtractorTest extends PHPUnit_Framework_TestCase
      */
     public function testListContents()
     {
-        $this->assertContains('META-INF/MANIFEST.MF', implode("\n", $this->_squashfsArchiveExtractor->listContents()));
+        $this->assertContains('abbaye-title.png', implode("\n", $this->_squashfsArchiveExtractor->listContents()));
     }
 
     /**
@@ -37,7 +37,7 @@ class IsoArchiveExtractorTest extends PHPUnit_Framework_TestCase
      */
     public function testFileInArchive()
     {
-        $this->assertTrue($this->_squashfsArchiveExtractor->fileInArchive('META-INF/MANIFEST.MF'));
+        $this->assertTrue($this->_squashfsArchiveExtractor->fileInArchive('abbaye-title.png'));
     }
 
     /**
@@ -45,8 +45,8 @@ class IsoArchiveExtractorTest extends PHPUnit_Framework_TestCase
      */
     public function testExtractFile()
     {
-        $this->_squashfsArchiveExtractor->extractFile('META-INF/MANIFEST.MF', __DIR__ . '/Test');
-        $this->assertFileExists(__DIR__ . '/Test/META-INF/MANIFEST.MF');
+        $this->_squashfsArchiveExtractor->extractFile('abbaye-title.png', __DIR__ . '/Test');
+        $this->assertFileExists(__DIR__ . '/Test/abbaye-title.png');
     }
 
     /**
@@ -55,7 +55,7 @@ class IsoArchiveExtractorTest extends PHPUnit_Framework_TestCase
     public function testExtractAll()
     {
         $this->_squashfsArchiveExtractor->extractAll(__DIR__ . '/Test');
-        $this->assertFileExists(__DIR__ . '/Test/META-INF/MANIFEST.MF');
+        $this->assertFileExists(__DIR__ . '/Test/abbaye-title.png');
     }
 
     /**

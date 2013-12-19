@@ -26,7 +26,7 @@ class IsoArchiveExtractor extends ArchiveExtractor
         if ($status != 0) {
             throw new FileException('7z error: ' . implode(PHP_EOL, $output));
         }
-        return preg_filter('/^\d{4}-\d{2}-\d{2} \d{2}:\d{2}:\d{2} \.{5}.*  (\w.+)$/','$1', $output);
+        return preg_filter('/^\d{4}-\d{2}-\d{2} \d{2}:\d{2}:\d{2} \.{5}.*  (\w.+)$/', '$1', $output);
     }
 
     /**

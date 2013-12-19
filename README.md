@@ -13,7 +13,7 @@ PndAid is a small PHP library for handling and interrogating Pnd files.
 * Save the icon to its own file
 * Ability to iterate over and seek to file data like an array
 * Ability to list files in archive
-* Ability to extract files from archive
+* Ability to extract files from both pnd archive formats (ISO|Squashfs)
 
 ## Getting Started
 
@@ -58,11 +58,14 @@ foreach ($fileIterator as $position => $data) {
 ```
 Extract file from iso archive (requires 7z being installed on your environment)
 ```PHP
-$isoArchiveExtractor = new IsoArchiveExtractor('/path/to/foo.pnd');
-$isoArchiveExtractor->extractFile('META-INF/MANIFEST.MF',
-                                  '/path/to/directory/to/extract/to');
+$Extractor = new IsoArchiveExtractor('/path/to/foo.pnd');
+$Extractor->extractFile('META-INF/MANIFEST.MF', '/dir/to/extract/to');
 ```
-
+Extract file from squashfs archive (requires squashfs-tools being installed on your environment)
+```PHP
+$Extractor = new SquashfsArchiveExtractor('/path/to/foo.pnd');
+$Extractor->extractFile('META-INF/MANIFEST.MF', '/dir/to/extract/to');
+```
 ## Documentation
 
 ### Unit Testing
