@@ -12,6 +12,8 @@ PndAid is a small PHP library for handling and interrogating Pnd files.
 * Save the pXML to its own file
 * Save the icon to its own file
 * Ability to iterate over and seek to file data like an array
+* Ability to list files in archive
+* Ability to extract files from archive
 
 ## Getting Started
 
@@ -54,6 +56,12 @@ foreach ($fileIterator as $position => $data) {
     }
 }
 ```
+Extract file from iso archive (requires 7z being installed on your environment)
+```PHP
+$isoArchiveExtractor = new IsoArchiveExtractor('/path/to/foo.pnd');
+$isoArchiveExtractor->extractFile('META-INF/MANIFEST.MF', '/path/to/directory/to/extract/to');
+```
+
 ## Documentation
 
 ### Unit Testing

@@ -8,6 +8,7 @@
 
 namespace PndAid\Files;
 
+use PndAid\ArchiveExtractors\ArchiveExtractor;
 use PndAid\FileDataIterators\FileDataIterator;
 
 /**
@@ -25,6 +26,11 @@ class PndFile extends File
      * @var SavableFile $Pxml
      */
     public $Pxml;
+
+    /**
+     * @var ArchiveExtractor $archiveExtractor
+     */
+    protected $archiveExtractor;
 
     /**
      * @param string $filePath
@@ -144,4 +150,14 @@ class PndFile extends File
 
         return $iconStartPos;
     }
+
+    /**
+     * Save preview pictures to disk
+     * @param string $dirToSaveTo
+     */
+    public function extractPreviews($dirToSaveTo)
+    {
+        // TODO: Implement extractPreviews method.
+    }
+
 }

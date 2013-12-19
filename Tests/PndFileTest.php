@@ -31,7 +31,7 @@ class PndFileTest extends PHPUnit_Framework_TestCase
     public function setUp()
     {
         $this->_pndFileIso = FileFactory::create('pnd', __DIR__ . '/Bump3.pnd');
-        $this->_pndFileSqa = FileFactory::create('pnd',__DIR__ . '/abbaye.pnd');
+        $this->_pndFileSqa = FileFactory::create('pnd', __DIR__ . '/abbaye.pnd');
     }
 
     /**
@@ -90,7 +90,7 @@ class PndFileTest extends PHPUnit_Framework_TestCase
      */
     public function testPndFileThrowsFileException()
     {
-        $pndFile = FileFactory::create('pnd',__DIR__ . '/foo.pnd');
+        $pndFile = FileFactory::create('pnd', __DIR__ . '/foo.pnd');
     }
 
     /**
@@ -98,7 +98,16 @@ class PndFileTest extends PHPUnit_Framework_TestCase
      */
     public function testPndFileThrowsInvalidPndException()
     {
-        $pndFile = FileFactory::create('pnd',__DIR__ . '/bar.pnd');
+        $pndFile = FileFactory::create('pnd', __DIR__ . '/bar.pnd');
+    }
+
+    /**
+     * Test housekeeping
+     */
+    public static function tearDownAfterClass()
+    {
+        unlink(__DIR__ . '/Bump3.pnd.icon.png');
+        unlink(__DIR__ . '/Bump3.pnd.pxml.xml');
     }
 
 }
