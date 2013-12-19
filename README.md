@@ -17,6 +17,10 @@ PndAid is a small PHP library for handling and interrogating Pnd files.
 
 ## Getting Started
 
+### Requirements
+
+* 7z and squashfs-tools installed on your local environment (only tested on linux)
+
 ### Basic Usage
 
 Instantiate a PndFile:
@@ -56,12 +60,12 @@ foreach ($fileIterator as $position => $data) {
     }
 }
 ```
-Extract file from iso archive (requires 7z being installed on your environment)
+Extract file from iso archive
 ```PHP
 $Extractor = new IsoArchiveExtractor('/path/to/foo.pnd');
 $Extractor->extractFile('META-INF/MANIFEST.MF', '/dir/to/extract/to');
 ```
-Extract file from squashfs archive (requires squashfs-tools being installed on your environment)
+Extract file from squashfs archive
 ```PHP
 $Extractor = new SquashfsArchiveExtractor('/path/to/foo.pnd');
 $Extractor->extractFile('META-INF/MANIFEST.MF', '/dir/to/extract/to');
