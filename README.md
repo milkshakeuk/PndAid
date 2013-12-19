@@ -59,7 +59,8 @@ foreach ($fileIterator as $position => $data) {
 Extract file from iso archive (requires 7z being installed on your environment)
 ```PHP
 $isoArchiveExtractor = new IsoArchiveExtractor('/path/to/foo.pnd');
-$isoArchiveExtractor->extractFile('META-INF/MANIFEST.MF', '/path/to/directory/to/extract/to');
+$isoArchiveExtractor->extractFile('META-INF/MANIFEST.MF',
+                                  '/path/to/directory/to/extract/to');
 ```
 
 ## Documentation
