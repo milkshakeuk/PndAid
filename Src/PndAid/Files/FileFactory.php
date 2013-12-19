@@ -7,9 +7,8 @@
  */
 
 namespace PndAid\Files;
-
-
 use PndAid\FileDataIterators\ReverseFileDataIterator;
+
 
 /**
  * Class FileFactory
