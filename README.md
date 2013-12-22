@@ -79,7 +79,7 @@ $Extractor->extractFile('file1.png', '/dir/to/extract/to');
 ```
 Extract many files from Squashfs archive, same method works for IsoArchiveExtractor
 ```PHP
-$Extractor->extractFile(['file1.png','run.sh'], '/dir/to/extract/to');
+$Extractor->extractFiles(['file1.png','run.sh'], '/dir/to/extract/to');
 ```
 Extract all files from Squashfs archive, same method works for IsoArchiveExtractor
 ```PHP
