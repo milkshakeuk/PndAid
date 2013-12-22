@@ -76,14 +76,4 @@ class PxmlFacade
         return $this->xmlHandler->xpathSearch($xpathPattern);
     }
 
-    /**
-     * return pxml data as string
-     * @return string
-     */
-    public function data()
-    {
-        return (string)$this->savableFile;
-    }
-
-
 } 

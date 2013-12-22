@@ -33,7 +33,7 @@ $fileType = $pnd->fileType();
 ```
 Get the pXml as a string:
 ```PHP
-$pxml = $pnd->pxml->data();
+$pxml = (string)$pnd->pxml;
 ```
 Save the pXml to disk:
 ```PHP
