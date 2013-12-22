@@ -93,8 +93,8 @@ $files = $Extractor->listContents();
 
 Check if the PXML is valid
 ```PHP
-if(!$pnd->isValid()){
-    foreach($pnd->getPxmlErrors() as $e){
+if(!$pnd->pxml->isValid()){
+    foreach($pnd->pxml->getPxmlErrors() as $e){
         echo $e;
     }
 }
