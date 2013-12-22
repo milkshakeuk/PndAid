@@ -14,6 +14,7 @@ PndAid is a small PHP library for handling and interrogating Pnd files.
 * Ability to iterate over and seek to file data like an array
 * Ability to list files in archive
 * Ability to extract files from both pnd archive formats (ISO|Squashfs)
+* check validity of PXML
 
 ## Getting Started
 
@@ -88,6 +89,15 @@ $Extractor->extractAll('/dir/to/extract/to');
 Get an array list all files from Squashfs archive, same method works for IsoArchiveExtractor
 ```PHP
 $files = $Extractor->listContents();
+```
+
+Check if the PXML is valid
+```PHP
+if(!$pnd->isValid()){
+    foreach($pnd->getPxmlErrors() as $e){
+        echo $e;
+    }
+}
 ```
 
 ## Documentation
