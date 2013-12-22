@@ -72,7 +72,7 @@ class PndFileTest extends PHPUnit_Framework_TestCase
      */
     public function testSavePXmlIso()
     {
-        $this->_pndFileIso->Pxml->Save($this->_pndFileIso->filePath() . '.pxml.xml');
+        $this->_pndFileIso->pxml->Save($this->_pndFileIso->filePath() . '.pxml.xml');
         $this->assertFileExists($this->_pndFileIso->filePath() . '.pxml.xml');
     }
 
@@ -81,7 +81,7 @@ class PndFileTest extends PHPUnit_Framework_TestCase
      */
     public function testSaveIconIso()
     {
-        $this->_pndFileIso->Icon->Save($this->_pndFileIso->filePath() . '.icon.png');
+        $this->_pndFileIso->icon->Save($this->_pndFileIso->filePath() . '.icon.png');
         $this->assertFileExists($this->_pndFileIso->filePath() . '.icon.png');
     }
 

@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<PXML xmlns="http://openpandora.org/namespaces/PXML">
+    <package id="Bump3">
+        <version major="0" minor="1" release="58" build="0" type="Release"/>
+        <author name="Bump3" website="http://code.google.com/p/bump3/wiki/About"/>
+        <titles>
+            <title lang="en_US">Bump3 MP3 Aggregator</title>
+        </titles>
+        <descriptions>
+            <description lang="en_US">You Need JAVA installed to run this software.
+
+                BuMP3 is a MP3 content aggregator. In other words, if you specify an author name and a song name, it will crawl a number of services to find and download the appropriate file. Here are some of the additional features of Bump3:
+
+                - will not download a song less than a certain length (default is 1MB; but it's adjustable),
+                - will not download the same song twice (no duplicates option),
+                - fast search results (can search an entire site in less than a second,
+                - automatic downloading of songs once found,
+                - playing of songs immediately after download begins (songs usually begin playing within seconds of searching),
+                - which media player program to launch the partially-downloaded files to.
+
+                Important Legal Note:
+                This program is completely legal to download and execute.
+                Downloading copyrighted materials is against the law in most countries.
+                BuMP3 is not intended to be used to download copyrighted materials.
+                The author of BuMP3 cannot be held responsible if this program is used to download illegal content.
+
+            </description>
+        </descriptions>
+        <icon src="icon.png"/>
+    </package>
+
+    <application id="Bump3">
+        <exec command="run.sh"/>
+        <version major="0" minor="1" release="58" build="0"/>
+        <author name="Bump3" website="http://code.google.com/p/bump3/wiki/About"/>
+        <titles>
+            <title lang="en_US">Bump3 MP3 Aggregator</title>
+        </titles>
+        <title lang="en_US">Bump3 MP3 Aggregator</title>
+        <descriptions>
+            <description lang="en_US">You Need JAVA installed to run this software.
+
+                BuMP3 is a MP3 content aggregator. In other words, if you specify an author name and a song name, it will crawl a number of services to find and download the appropriate file. Here are some of the additional features of Bump3:
+
+                - will not download a song less than a certain length (default is 1MB; but it's adjustable),
+                - will not download the same song twice (no duplicates option),
+                - fast search results (can search an entire site in less than a second,
+                - automatic downloading of songs once found,
+                - playing of songs immediately after download begins (songs usually begin playing within seconds of searching),
+                - which media player program to launch the partially-downloaded files to.
+
+                Important Legal Note:
+                This program is completely legal to download and execute.
+                Downloading copyrighted materials is against the law in most countries.
+                BuMP3 is not intended to be used to download copyrighted materials.
+                The author of BuMP3 cannot be held responsible if this program is used to download illegal content.
+
+            </description>
+        </descriptions>
+        <description lang="en_US">You Need JAVA installed to run this software.
+
+            BuMP3 is a MP3 content aggregator. In other words, if you specify an author name and a song name, it will crawl a number of services to find and download the appropriate file. Here are some of the additional features of Bump3:
+
+            - will not download a song less than a certain length (default is 1MB; but it's adjustable),
+            - will not download the same song twice (no duplicates option),
+            - fast search results (can search an entire site in less than a second,
+            - automatic downloading of songs once found,
+            - playing of songs immediately after download begins (songs usually begin playing within seconds of searching),
+            - which media player program to launch the partially-downloaded files to.
+
+            Important Legal Note:
+            This program is completely legal to download and execute.
+            Downloading copyrighted materials is against the law in most countries.
+            BuMP3 is not intended to be used to download copyrighted materials.
+            The author of BuMP3 cannot be held responsible if this program is used to download illegal content.
+        </description>
+        <icon src="icon.png"/>
+        <licenses>
+            <license name="GNU GPL v2" url="https://www.gnu.org/licenses/gpl-2.0" sourcecodeurl="#"/>
+        </licenses>
+        <previewpics>
+
+            <pic src="01.png"/>
+            <pic src="02.png"/>
+            <pic src="03.png"/>
+
+
+        </previewpics>
+        <info name="Bump3 Readme" type="text/html" src="/mnt/utmp/Bump3/README.TXT"/>
+        <categories>
+            <category name="Network">
+            </category>
+        </categories>
+    </application>
+</PXML>

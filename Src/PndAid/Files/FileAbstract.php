@@ -1,37 +1,37 @@
 <?php
 /**
- * Created by PhpStorm.
- * User: Jake Aitchison
- * Date: 09/12/13
- * Time: 14:58
+ * @package   PndAid
+ * @link      https://github.com/milkshakeuk/PndAid
+ * @author Jake Aitchison (milkshake) <jake.aitchison@outlook.com>
+ * @copyright 2013 Jake Aitchison
+ * @license   http://www.gnu.org/licenses/lgpl-2.1.html Distributed under the Lesser General Public License (LGPLv2.1)
  */
 
 namespace PndAid\Files;
 
-use PndAid\FileDataIterators\FileDataIterator;
-use RuntimeException;
+use PndAid\FileDataIterators\FileDataIteratorAbstract;
 
 /**
  * Class Files
  * @package PndTools\BaseClass
  */
-abstract class File
+abstract class FileAbstract
 {
     /**
      * @var string $filePath
      */
     protected $filePath;
     /**
-     * @var FileDataIterator $fileIterator
+     * @var FileDataIteratorAbstract $fileIterator
      */
     protected $fileIterator;
 
     /**
      * Set our file path, verify file exists, instantiate
      * @param $filePath
-     * @param FileDataIterator $fileIterator
+     * @param FileDataIteratorAbstract $fileIterator
      */
-    function __construct($filePath, FileDataIterator $fileIterator)
+    function __construct($filePath, FileDataIteratorAbstract $fileIterator)
     {
         $this->filePath = $filePath;
         $this->valid();
@@ -40,12 +40,12 @@ abstract class File
 
     /**
      * Verify file exists
-     * @throws \RuntimeException
+     * @throws FileException
      */
     protected function valid()
     {
         if (!file_exists($this->filePath)) {
-            throw new RuntimeException("File does not exist! : $this->filePath");
+            throw new FileException("File does not exist! : $this->filePath");
         }
     }
 

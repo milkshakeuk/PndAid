@@ -33,24 +33,25 @@ $fileType = $pnd->fileType();
 ```
 Get the pXml as a string:
 ```PHP
-$pxml = $pnd->Pxml->Data();
+$pxml = $pnd->pxml->data();
 ```
 Save the pXml to disk:
 ```PHP
-$pnd->Pxml->Save('/path/to/pxml.xml');
+$pnd->pxml->save('/path/to/pxml.xml');
 ```
 Get the icon as a string (not much use but still):
 ```PHP
-$pxml = $pnd->Icon->Data();
+$pxml = (string)$pnd->icon;
 ```
 Save the icon to disk:
 ```PHP
-$pnd->Icon->Save('/path/to/icon.png');
+$pnd->icon->save('/path/to/icon.png');
 ```
 Find the position of something in the pnd binary
 ```PHP
 $position = $pnd->findInFile('<package ');
 ```
+
 Or Iterate over any file for any reason
 ```PHP
 $fileIterator = new ReverseFileDataIterator('/path/to/file');
@@ -60,15 +61,26 @@ foreach ($fileIterator as $position => $data) {
     }
 }
 ```
-Extract file from iso archive
+
+When extracting files from ISO or Squashfs the directory structure is preserved
+The ability to ignore directory structure could be implemented but I haven't
+
+Extract preview pics from the pnd archive
 ```PHP
-$Extractor = new IsoArchiveExtractor('/path/to/foo.pnd');
-$Extractor->extractFile('META-INF/MANIFEST.MF', '/dir/to/extract/to');
+$position = $pnd->extractPreviewPics('/path/to/save/directory');
 ```
-Extract file from squashfs archive
+
+You can use this library to extract any file from ISO or Squashfs archives
+
+Extract file from Squashfs archive, same method works for IsoArchiveExtractor
 ```PHP
 $Extractor = new SquashfsArchiveExtractor('/path/to/foo.pnd');
-$Extractor->extractFile('META-INF/MANIFEST.MF', '/dir/to/extract/to');
+$Extractor->extractFile('file1.png', '/dir/to/extract/to');
+```
+Extract many files from Squashfs archive, same method works for IsoArchiveExtractor
+```PHP
+$Extractor = new SquashfsArchiveExtractor('/path/to/foo.pnd');
+$Extractor->extractFile(['file1.png','run.sh'], '/dir/to/extract/to');
 ```
 ## Documentation
 

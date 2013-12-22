@@ -1,9 +1,10 @@
 <?php
 /**
- * Created by PhpStorm.
- * User: Jake Aitchison
- * Date: 10/12/13
- * Time: 22:41
+ * @package   PndAid
+ * @link      https://github.com/milkshakeuk/PndAid
+ * @author Jake Aitchison (milkshake) <jake.aitchison@outlook.com>
+ * @copyright 2013 Jake Aitchison
+ * @license   http://www.gnu.org/licenses/lgpl-2.1.html Distributed under the Lesser General Public License (LGPLv2.1)
  */
 
 namespace PndAid\Files;
@@ -11,23 +12,14 @@ namespace PndAid\Files;
 
 /**
  * Class SavableFile
- * @package PndTools\Files
+ * @package PndAid\Files
  */
-abstract class SavableFile
+class SavableFile implements SavableFileInterface
 {
     /**
      * @var string $fileData
      */
     protected $fileData;
-
-    /**
-     * Set internal parameters
-     * @param $fileData
-     */
-    function __construct($fileData)
-    {
-        $this->fileData = $fileData;
-    }
 
     /**
      * return file data as string
@@ -39,18 +31,34 @@ abstract class SavableFile
     }
 
     /**
-     * return file data as string
-     * @return string
+     * Write the file and data to disk
+     * @param string $filePath where to save
+     * @return bool was it saved successfully
      */
-    public function Data()
+    public function save($filePath)
     {
-        return $this->fileData;
+        $wh = fopen($filePath, 'wb');
+
+        if (!$wh) {
+            return false;
+        }
+
+        if (flock($wh, LOCK_EX)) {
+            fwrite($wh, $this->fileData);
+            fflush($wh);
+        }
+        fclose($wh);
+
+        return true;
     }
 
     /**
-     * Write data to file
-     * @param string $filePath location to save file
+     * Set the contents of the file
+     * @param string $fileData
+     * @return void
      */
-    abstract public function Save($filePath = null);
-
-} 
+    public function setData(&$fileData)
+    {
+        $this->fileData = $fileData;
+    }
+}

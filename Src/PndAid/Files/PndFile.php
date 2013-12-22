@@ -1,91 +1,49 @@
 <?php
 /**
- * Created by PhpStorm.
- * User: Jake Aitchison
- * Date: 09/12/13
- * Time: 15:34
+ * @package   PndAid
+ * @link      https://github.com/milkshakeuk/PndAid
+ * @author Jake Aitchison (milkshake) <jake.aitchison@outlook.com>
+ * @copyright 2013 Jake Aitchison
+ * @license   http://www.gnu.org/licenses/lgpl-2.1.html Distributed under the Lesser General Public License (LGPLv2.1)
  */
 
 namespace PndAid\Files;
 
-use PndAid\ArchiveExtractors\ArchiveExtractor;
-use PndAid\FileDataIterators\FileDataIterator;
+use PndAid\ArchiveExtractors\ArchiveExtractorAbstract;
+use PndAid\ArchiveExtractors\ArchiveExtractorFactory;
+use PndAid\FileDataIterators\FileDataIteratorAbstract;
 
 /**
  * Class PndFile
  * @package PndAid\Files
  */
-class PndFile extends File
+class PndFile extends FileAbstract
 {
 
     /**
      * @var SavableFile $Icon
      */
-    public $Icon;
+    public $icon;
     /**
      * @var SavableFile $Pxml
      */
-    public $Pxml;
-
+    public $pxml;
     /**
-     * @var ArchiveExtractor $archiveExtractor
+     * @var ArchiveExtractorAbstract $archiveExtractor
      */
     protected $archiveExtractor;
 
     /**
      * @param string $filePath
-     * @param FileDataIterator $fileIterator
+     * @param FileDataIteratorAbstract $fileIterator
+     * @param string $pXmlSchemaPath location of pXml schema
      */
-    function __construct($filePath, FileDataIterator $fileIterator)
+    function __construct($filePath, FileDataIteratorAbstract $fileIterator, $pXmlSchemaPath)
     {
         parent::__construct($filePath, $fileIterator);
-        $this->Pxml = new SavablePxml($this->_getPXmlData());
-        $this->Icon = new SavableIcon($this->_getIconData());
-    }
-
-    /**
-     * Verify exists and is a valid pnd file
-     * @throws InvalidPndException
-     */
-    protected function valid()
-    {
-        if (!file_exists($this->filePath)) {
-            throw new FileException("Files does not exist! : $this->filePath");
-        }
-        if (!$this->_isValidFileType()) {
-            throw new InvalidPndException("Files provided is not of type ISO or Squashfs!");
-        }
-        if (!$this->_isValidFileExtension()) {
-            throw new InvalidPndException("Files provided has invalid extension!");
-        }
-    }
-
-    /**
-     * Confirm whether file is ISO or Squashfs
-     * @return bool
-     */
-    protected function _isValidFileType()
-    {
-        $fileType = $this->fileType();
-        return ($fileType == "ISO" || $fileType == "Squashfs");
-    }
-
-    /**
-     * get pnd file type
-     * @return string
-     */
-    public function fileType()
-    {
-        return (preg_match('/\b(Squashfs|ISO)\b/', $this->getFileInfo(), $matched) == 1) ? $matched[0] : "";
-    }
-
-    /**
-     * check if pnd file has valid extension
-     * @return int
-     */
-    protected function _isValidFileExtension()
-    {
-        return (strcasecmp($this->fileExtension(), 'pnd') == 0);
+        $this->pxml = new PxmlFacade($this->_getPXmlData(), $pXmlSchemaPath);
+        $this->icon = new SavableFile($this->_getIconData());
+        $this->archiveExtractor = ArchiveExtractorFactory::create($this->fileType(), $filePath);
     }
 
     /**
@@ -152,12 +110,61 @@ class PndFile extends File
     }
 
     /**
+     * get pnd file type
+     * @return string
+     */
+    public function fileType()
+    {
+        return (preg_match('/\b(Squashfs|ISO)\b/', $this->getFileInfo(), $matched) == 1) ? $matched[0] : "";
+    }
+
+    /**
      * Save preview pictures to disk
      * @param string $dirToSaveTo
      */
-    public function extractPreviews($dirToSaveTo)
+    public function extractPreviewPics($dirToSaveTo)
     {
-        // TODO: Implement extractPreviews method.
+        $previewPics = array_map(function ($val) {
+            return (string)$val;
+        }, $this->pxml->xpathSearch('//p:previewpics/p:pic/@src'));
+
+        $this->archiveExtractor->extractFiles($previewPics, $dirToSaveTo);
+    }
+
+    /**
+     * Verify exists and is a valid pnd file
+     * @throws InvalidPndException
+     */
+    protected function valid()
+    {
+        if (!file_exists($this->filePath)) {
+            throw new FileException("Files does not exist! : $this->filePath");
+        }
+        if (!$this->_isValidFileType()) {
+            throw new InvalidPndException("Files provided is not of type ISO or Squashfs!");
+        }
+        if (!$this->_isValidFileExtension()) {
+            throw new InvalidPndException("Files provided has invalid extension!");
+        }
+    }
+
+    /**
+     * Confirm whether file is ISO or Squashfs
+     * @return bool
+     */
+    protected function _isValidFileType()
+    {
+        $fileType = $this->fileType();
+        return ($fileType == "ISO" || $fileType == "Squashfs");
+    }
+
+    /**
+     * check if pnd file has valid extension
+     * @return int
+     */
+    protected function _isValidFileExtension()
+    {
+        return (strcasecmp($this->fileExtension(), 'pnd') == 0);
     }
 
 }

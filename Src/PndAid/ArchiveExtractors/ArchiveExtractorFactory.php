@@ -1,9 +1,10 @@
 <?php
 /**
- * Created by PhpStorm.
- * User: Jake Aitchison
- * Date: 19/12/13
- * Time: 10:35
+ * @package   PndAid
+ * @link      https://github.com/milkshakeuk/PndAid
+ * @author Jake Aitchison (milkshake) <jake.aitchison@outlook.com>
+ * @copyright 2013 Jake Aitchison
+ * @license   http://www.gnu.org/licenses/lgpl-2.1.html Distributed under the Lesser General Public License (LGPLv2.1)
  */
 
 namespace PndAid\ArchiveExtractors;
@@ -20,7 +21,7 @@ class ArchiveExtractorFactory
      * return new ArchiveExtractor object
      * @param string $type type of file object
      * @param string $filePath location of file
-     * @return ArchiveExtractor
+     * @return ArchiveExtractorAbstract
      */
     static public function create($type, $filePath)
     {

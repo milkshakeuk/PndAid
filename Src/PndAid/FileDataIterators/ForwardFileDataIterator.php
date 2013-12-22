@@ -1,9 +1,10 @@
 <?php
 /**
- * Created by PhpStorm.
- * User: jake
- * Date: 17/12/13
- * Time: 19:10
+ * @package   PndAid
+ * @link      https://github.com/milkshakeuk/PndAid
+ * @author Jake Aitchison (milkshake) <jake.aitchison@outlook.com>
+ * @copyright 2013 Jake Aitchison
+ * @license   http://www.gnu.org/licenses/lgpl-2.1.html Distributed under the Lesser General Public License (LGPLv2.1)
  */
 
 namespace PndAid\FileDataIterators;
@@ -13,7 +14,7 @@ namespace PndAid\FileDataIterators;
  * Class ForwardFileDataIterator
  * @package PndAid\FileDataIterators
  */
-class ForwardFileDataIterator extends FileDataIterator
+class ForwardFileDataIterator extends FileDataIteratorAbstract
 {
 
     /**

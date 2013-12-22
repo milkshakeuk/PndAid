@@ -1,5 +1,5 @@
 <?php
-use PndAid\ArchiveExtractors\ArchiveExtractor;
+use PndAid\ArchiveExtractors\ArchiveExtractorAbstract;
 use PndAid\ArchiveExtractors\IsoArchiveExtractor;
 
 /**
@@ -12,7 +12,7 @@ use PndAid\ArchiveExtractors\IsoArchiveExtractor;
 class IsoArchiveExtractorTest extends PHPUnit_Framework_TestCase
 {
     /**
-     * @var ArchiveExtractor $_isoArchiveExtractor
+     * @var ArchiveExtractorAbstract $_isoArchiveExtractor
      */
     protected $_squashfsArchiveExtractor;
 
@@ -47,6 +47,16 @@ class IsoArchiveExtractorTest extends PHPUnit_Framework_TestCase
     {
         $this->_squashfsArchiveExtractor->extractFile('META-INF/MANIFEST.MF', __DIR__ . '/Test');
         $this->assertFileExists(__DIR__ . '/Test/META-INF/MANIFEST.MF');
+    }
+
+    /**
+     * Check to see if we can extract an array of files from the archive
+     */
+    public function testExtractFiles()
+    {
+        $this->_squashfsArchiveExtractor->extractFiles(['bump3/COPYING','bump3/CHANGES'], __DIR__ . '/Test');
+        $this->assertFileExists(__DIR__ . '/Test/bump3/COPYING');
+        $this->assertFileExists(__DIR__ . '/Test/bump3/CHANGES');
     }
 
     /**

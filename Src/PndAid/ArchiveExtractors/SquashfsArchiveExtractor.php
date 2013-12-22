@@ -1,9 +1,10 @@
 <?php
 /**
- * Created by PhpStorm.
- * User: Jake Aitchison
- * Date: 19/12/13
- * Time: 00:57
+ * @package   PndAid
+ * @link      https://github.com/milkshakeuk/PndAid
+ * @author Jake Aitchison (milkshake) <jake.aitchison@outlook.com>
+ * @copyright 2013 Jake Aitchison
+ * @license   http://www.gnu.org/licenses/lgpl-2.1.html Distributed under the Lesser General Public License (LGPLv2.1)
  */
 
 namespace PndAid\ArchiveExtractors;
@@ -11,7 +12,7 @@ namespace PndAid\ArchiveExtractors;
 
 use PndAid\Files\FileException;
 
-class SquashfsArchiveExtractor extends ArchiveExtractor
+class SquashfsArchiveExtractor extends ArchiveExtractorAbstract
 {
 
     /**
@@ -41,7 +42,7 @@ class SquashfsArchiveExtractor extends ArchiveExtractor
         $command = "unsquashfs -d $fileDestination -f $this->filePath \"$internalFilePath\"";
         exec($command, $output, $status);
 
-        if ($status != 0) {
+        if ($status != 0 || !$this->fileInArchive($internalFilePath)) {
             throw new FileException('Unsquashfs error: ' . implode(PHP_EOL, $output));
         }
     }

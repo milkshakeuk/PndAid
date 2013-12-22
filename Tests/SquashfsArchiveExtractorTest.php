@@ -1,5 +1,5 @@
 <?php
-use PndAid\ArchiveExtractors\ArchiveExtractor;
+use PndAid\ArchiveExtractors\ArchiveExtractorAbstract;
 use PndAid\ArchiveExtractors\SquashfsArchiveExtractor;
 
 /**
@@ -12,7 +12,7 @@ use PndAid\ArchiveExtractors\SquashfsArchiveExtractor;
 class SquashfsArchiveExtractorTest extends PHPUnit_Framework_TestCase
 {
     /**
-     * @var ArchiveExtractor $_isoArchiveExtractor
+     * @var ArchiveExtractorAbstract $_isoArchiveExtractor
      */
     protected $_squashfsArchiveExtractor;
 
@@ -47,6 +47,16 @@ class SquashfsArchiveExtractorTest extends PHPUnit_Framework_TestCase
     {
         $this->_squashfsArchiveExtractor->extractFile('abbaye-title.png', __DIR__ . '/Test');
         $this->assertFileExists(__DIR__ . '/Test/abbaye-title.png');
+    }
+
+    /**
+     * Check to see if we can extract an array of files from the archive
+     */
+    public function testExtractFiles()
+    {
+        $this->_squashfsArchiveExtractor->extractFiles(['abbaye.png','abbaye.sh'], __DIR__ . '/Test');
+        $this->assertFileExists(__DIR__ . '/Test/abbaye.png');
+        $this->assertFileExists(__DIR__ . '/Test/abbaye.sh');
     }
 
     /**

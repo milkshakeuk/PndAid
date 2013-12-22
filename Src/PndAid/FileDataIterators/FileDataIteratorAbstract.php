@@ -1,9 +1,10 @@
 <?php
 /**
- * Created by PhpStorm.
- * User: Jake Aitchison
- * Date: 10/12/13
- * Time: 21:21
+ * @package   PndAid
+ * @link      https://github.com/milkshakeuk/PndAid
+ * @author Jake Aitchison (milkshake) <jake.aitchison@outlook.com>
+ * @copyright 2013 Jake Aitchison
+ * @license   http://www.gnu.org/licenses/lgpl-2.1.html Distributed under the Lesser General Public License (LGPLv2.1)
  */
 
 namespace PndAid\FileDataIterators;
@@ -16,7 +17,7 @@ use SeekableIterator;
  * Class FileDataIterator
  * @package PndAid\FileDataIterators
  */
-abstract class FileDataIterator implements SeekableIterator
+abstract class FileDataIteratorAbstract implements SeekableIterator
 {
 
     /**

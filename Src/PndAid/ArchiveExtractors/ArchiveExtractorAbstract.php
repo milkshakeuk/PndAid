@@ -1,9 +1,10 @@
 <?php
 /**
- * Created by PhpStorm.
- * User: Jake Aitchison
- * Date: 18/12/13
- * Time: 19:24
+ * @package   PndAid
+ * @link      https://github.com/milkshakeuk/PndAid
+ * @author Jake Aitchison (milkshake) <jake.aitchison@outlook.com>
+ * @copyright 2013 Jake Aitchison
+ * @license   http://www.gnu.org/licenses/lgpl-2.1.html Distributed under the Lesser General Public License (LGPLv2.1)
  */
 
 namespace PndAid\ArchiveExtractors;
@@ -15,13 +16,14 @@ use PndAid\Files\FileException;
  * Class ArchiveExtractors
  * @package PndAid\ArchiveExtractors
  */
-abstract class ArchiveExtractor
+abstract class ArchiveExtractorAbstract
 {
 
     /**
      * @var string $filePath location of file
      */
     protected $filePath;
+
 
     /**
      * @param string $filePath location of file
@@ -32,7 +34,6 @@ abstract class ArchiveExtractor
         if (!file_exists($filePath)) {
             throw new FileException("Files does not exist! : $filePath");
         }
-
         $this->filePath = $filePath;
     }
 
