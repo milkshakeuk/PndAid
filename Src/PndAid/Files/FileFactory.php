@@ -23,7 +23,7 @@ class FileFactory
      * return new file object
      * @param string $type type of file object
      * @param string $filePath location of file
-     * @return PndFile
+     * @return FileAbstract
      */
     static public function create($type, $filePath)
     {
