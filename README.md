@@ -40,6 +40,14 @@ Save the pXml to disk:
 ```PHP
 $pnd->pxml->save('/path/to/pxml.xml');
 ```
+Check if the PXML is valid
+```PHP
+if(!$pnd->pxml->isValid()){
+    foreach($pnd->pxml->getPxmlErrors() as $e){
+        echo $e;
+    }
+}
+```
 Get the icon as a string (not much use but still):
 ```PHP
 $pxml = (string)$pnd->icon;
@@ -89,15 +97,6 @@ $Extractor->extractAll('/dir/to/extract/to');
 Get an array list all files from Squashfs archive, same method works for IsoArchiveExtractor
 ```PHP
 $files = $Extractor->listContents();
-```
-
-Check if the PXML is valid
-```PHP
-if(!$pnd->pxml->isValid()){
-    foreach($pnd->pxml->getPxmlErrors() as $e){
-        echo $e;
-    }
-}
 ```
 
 ## Documentation
