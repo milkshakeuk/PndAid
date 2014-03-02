@@ -124,4 +124,15 @@ abstract class FileAbstract
     {
         return shell_exec('file -b ' . $this->filePath);
     }
+
+
+    /**
+     * Calculates the md5 hash of the file
+     * @internal param string $filePath location of file
+     * @return string
+     */
+    public function md5Hash()
+    {
+        return md5_file($this->filePath);
+    }
 }

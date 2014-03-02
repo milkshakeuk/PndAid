@@ -102,6 +102,15 @@ class PndFileTest extends PHPUnit_Framework_TestCase
     }
 
     /**
+     * Test getting md5 file hash for pnd archive
+     */
+    public function testMd5GenerationOfFile()
+    {
+        $md5 = $this->_pndFileIso->md5Hash();
+        $this->assertEquals('2c1e6074f498c88ebdb5e08ef430b687',$md5);
+    }
+
+    /**
      * Test housekeeping
      */
     public static function tearDownAfterClass()
