@@ -6,6 +6,7 @@
  * Time: 16:01
  */
 
+use PHPUnit\Framework\TestCase;
 use PndAid\Files\FileFactory;
 use PndAid\Files\PndFile;
 
@@ -13,7 +14,7 @@ use PndAid\Files\PndFile;
  * Class PndFileTest
  * @package PndAid\Files
  */
-class PndFileTest extends PHPUnit_Framework_TestCase
+class PndFileTest extends TestCase
 {
 
     /**
@@ -120,4 +121,3 @@ class PndFileTest extends PHPUnit_Framework_TestCase
     }
 
 }
- 

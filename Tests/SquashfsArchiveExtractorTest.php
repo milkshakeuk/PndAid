@@ -1,15 +1,15 @@
 <?php
-use PndAid\ArchiveExtractors\ArchiveExtractorAbstract;
-use PndAid\ArchiveExtractors\SquashfsArchiveExtractor;
-
 /**
  * Created by PhpStorm.
  * User: Jake Aitchison
  * Date: 18/12/13
  * Time: 22:43
  */
+use PHPUnit\Framework\TestCase;
+use PndAid\ArchiveExtractors\ArchiveExtractorAbstract;
+use PndAid\ArchiveExtractors\SquashfsArchiveExtractor;
 
-class SquashfsArchiveExtractorTest extends PHPUnit_Framework_TestCase
+class SquashfsArchiveExtractorTest extends TestCase
 {
     /**
      * @var ArchiveExtractorAbstract $_isoArchiveExtractor
@@ -76,4 +76,3 @@ class SquashfsArchiveExtractorTest extends PHPUnit_Framework_TestCase
         shell_exec('rm -rf ' . __DIR__ . '/Test/');
     }
 }
- 

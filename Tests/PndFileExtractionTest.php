@@ -1,15 +1,15 @@
 <?php
-use PndAid\Files\FileFactory;
-use PndAid\Files\PndFile;
-
 /**
  * Created by PhpStorm.
  * User: jake
  * Date: 19/12/13
  * Time: 23:50
  */
+use PHPUnit\Framework\TestCase;
+use PndAid\Files\FileFactory;
+use PndAid\Files\PndFile;
 
-class PndFileExtractionTest extends PHPUnit_Framework_TestCase {
+class PndFileExtractionTest extends TestCase {
     /**
      * @var PndFile $_pndFileIso
      */
@@ -53,4 +53,3 @@ class PndFileExtractionTest extends PHPUnit_Framework_TestCase {
         shell_exec('rm -rf ' . __DIR__ . '/TestPics/');
     }
 }
- 

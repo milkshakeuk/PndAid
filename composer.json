@@ -1,20 +1,22 @@
 {
-    "name": "Pandora/PndAid",
+    "name": "pandora/pnd-aid",
     "description": "Set of useful tools to handle PND files with php",
-    "minimum-stability": "stable",
+    "type": "library",
+    "require-dev": {
+        "phpunit/phpunit": "^6.2"
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "PndAid\\": "Src/PndAid/",
+            "Tests\\": "Tests/"
+        }
+    },
+    "license": "LGPL-2.1",
     "authors": [
         {
             "name": "Jake Aitchison",
             "email": "jake.aitchison@outlook.com"
         }
     ],
-    "require": {
-        "phpunit/phpunit": "3.7.28"
-    },
-    "autoload": {
-        "psr-0": {
-            "PndAid": "Src/",
-            "PndAid\\Tests": "Tests/"
-        }
-    }
+    "minimum-stability": "stable"
 }

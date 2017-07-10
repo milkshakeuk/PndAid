@@ -1,14 +1,14 @@
 <?php
-use PndAid\Files\XmlHandler;
-
 /**
  * Created by PhpStorm.
  * User: jake
  * Date: 20/12/13
  * Time: 13:28
  */
+use PHPUnit\Framework\TestCase;
+use PndAid\Files\XmlHandler;
 
-class XmlHandlerTest extends PHPUnit_Framework_TestCase {
+class XmlHandlerTest extends TestCase {
 
     protected $xmlHandler;
 
@@ -44,4 +44,3 @@ class XmlHandlerTest extends PHPUnit_Framework_TestCase {
         $this->assertNotEmpty($this->xmlHandler->xPathSearch('//p:previewpics/p:pic/@src'));
     }
 }
- 

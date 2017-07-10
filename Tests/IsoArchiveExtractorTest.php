@@ -1,15 +1,15 @@
 <?php
-use PndAid\ArchiveExtractors\ArchiveExtractorAbstract;
-use PndAid\ArchiveExtractors\IsoArchiveExtractor;
-
 /**
  * Created by PhpStorm.
  * User: Jake Aitchison
  * Date: 18/12/13
  * Time: 22:43
  */
+use PHPUnit\Framework\TestCase;
+use PndAid\ArchiveExtractors\ArchiveExtractorAbstract;
+use PndAid\ArchiveExtractors\IsoArchiveExtractor;
 
-class IsoArchiveExtractorTest extends PHPUnit_Framework_TestCase
+class IsoArchiveExtractorTest extends TestCase
 {
     /**
      * @var ArchiveExtractorAbstract $_isoArchiveExtractor
@@ -76,4 +76,3 @@ class IsoArchiveExtractorTest extends PHPUnit_Framework_TestCase
         shell_exec('rm -rf ' . __DIR__ . '/Test/');
     }
 }
- 
